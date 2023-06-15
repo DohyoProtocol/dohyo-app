@@ -59,7 +59,7 @@ export const CreateCommunity = ({ isOpen, onOpen, onClose }) => {
                   How do i create a community?
                 </Text>
                 <Text pl={3} pr={3} width={"100%"} fontSize={"md"}>
-                  Call the "recordCommunity" function in the Dohyo smart contract. (link
+                  Call the "recordCommunity" function in the Dohyō smart contract. (link
                   below)
                 </Text>
               </VStack>

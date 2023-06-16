@@ -113,6 +113,13 @@ export const BonsaiGameCard = ({ openSlip, cardMeta, cardState }) => {
             setApprovalGiven(true);
           }
         } else if (
+          started &&
+          !ended &&
+          _deadLineBlocksRemaining > 0 &&
+          nextPlayer !== wallet?.account
+        ) {
+          setPbText("Waiting");
+        } else if (
           (wallet?.account === player1 || wallet?.account === player2) &&
           nextPlayer !== wallet?.account &&
           _deadLineBlocksRemaining < 0 &&
@@ -332,7 +339,9 @@ export const BonsaiGameCard = ({ openSlip, cardMeta, cardState }) => {
         <Pot pot={pot} tokenAddress={tokenAddress} />
       </VStack>
 
-      {pbText && wallet && <PlayButton text={pbText} onClick={playButtonOnClick} />}
+      {pbText && wallet?.network === 42161 && (
+        <PlayButton text={pbText} onClick={playButtonOnClick} />
+      )}
     </GameCardBase>
   );
 };

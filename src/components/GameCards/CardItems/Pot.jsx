@@ -12,10 +12,9 @@ export const Pot = ({ pot, tokenAddress }) => {
   return (
     <Box maxW={"100%"}>
       <HStack mt={4}>
-        <FaCoins />
-        <Tooltip label={"Current pot of this game."}>
+        <Tooltip label={"The current pot of this game."}>
           <Text>
-            {"$" +
+            {"Pot $" +
               convertNumber(
                 getTokenPrice(tokenAddress) *
                   parseFloat(

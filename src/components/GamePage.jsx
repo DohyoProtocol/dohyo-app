@@ -24,15 +24,15 @@ import { useWeb3HelperContext } from "../hooks/useWeb3Helper";
 import { convertNumber } from "../utils/numberConvert";
 import { useFilterContext } from "../hooks/useFilter";
 import { WarningIcon } from "@chakra-ui/icons";
+import boxbg from "../assets/boxbg.jpeg";
 
 export const GamePage = ({
   gameName,
-  gameSlogan,
-  gameDescription,
   headerBg,
   headerImage,
   GameCard,
   CreateGame,
+  ExplainGame,
   BetSlip,
   commingSoon,
 }) => {
@@ -41,6 +41,12 @@ export const GamePage = ({
     onOpen: createOnOpen,
     onClose: createOnClose,
   } = useDisclosure();
+  const {
+    isOpen: explainIsOpen,
+    onOpen: explainOnOpen,
+    onClose: explainOnClose,
+  } = useDisclosure();
+
   const {
     isOpen: slipIsOpen,
     onOpen: slipOnOpen,
@@ -124,17 +130,21 @@ export const GamePage = ({
                 </Text>
               )}
             </HStack>
-            <HStack>
-              <Text m={0} mt={-1} color={"white"} fontSize={"2xl"}>
-                {gameSlogan}
-              </Text>
 
-              {gameDescription && (
-                <Tooltip shouldWrapChildren label={gameDescription}>
-                  <Icon as={FaQuestionCircle} color={"white"} />
-                </Tooltip>
-              )}
-            </HStack>
+            <Button
+              size={"sm"}
+              bgImage={boxbg}
+              bgSize={"initial"}
+              color={"white"}
+              _hover={{ bg: "whiteAlpha.100" }}
+              bgColor={"whiteAlpha.200"}
+              bgPos={mobile ? "0px 0px" : "20% 100%"}
+              rightIcon={<FaQuestionCircle />}
+              onClick={explainOnOpen}
+              disabled={commingSoon}
+            >
+              How To Play
+            </Button>
           </VStack>
           {!mobile && <Spacer />}
 
@@ -158,11 +168,12 @@ export const GamePage = ({
             bgPos={mobile ? "0px 0px" : "0px 0px"}
             bg={"white"}
             rounded={12}
+            wrap={"wrap"}
             opacity={"0.75"}
             ml={"auto"}
             justifyContent={mobile ? "center" : "center"}
           >
-            <WarningIcon color={"red"} />
+            {!mobile && <WarningIcon color={"red"} />}
             <Text
               m={0}
               textAlign={"center"}
@@ -170,18 +181,9 @@ export const GamePage = ({
               fontSize={"md"}
               fontWeight={"bold"}
             >
-              Alpha version.
+              Alpha version. Don't play with funds you can't afford to lose.
             </Text>
-            <Text
-              m={0}
-              textAlign={"center"}
-              color={"red"}
-              fontSize={"md"}
-              fontWeight={"bold"}
-            >
-              Don't play with funds you can't afford to lose.
-            </Text>
-            <WarningIcon color={"red"} />
+            {!mobile && <WarningIcon color={"red"} />}
           </HStack>
           <HStack
             pt={6}
@@ -204,21 +206,16 @@ export const GamePage = ({
                 spacing={1}
                 minW={mobile ? "100%" : null}
               >
-                {mobile && (
-                  <Text fontWeight={"extrabold"} color={"whiteAlpha.600"}>
-                    Game
-                  </Text>
-                )}
                 <Button
-                  size={"sm"}
-                  color={"whiteAlpha.600"}
-                  bg={"whiteAlpha.100"}
-                  _hover={{ bg: "whiteAlpha.300" }}
+                  size={"md"}
+                  color={"whiteAlpha.900"}
+                  bg={"blue.400"}
+                  _hover={{ bg: "blue.300" }}
                   leftIcon={<FaPlus />}
                   disabled={commingSoon && gameName !== "KAMI"}
                   onClick={createOnOpen}
                 >
-                  Create
+                  New Game
                 </Button>
               </HStack>
               <HStack
@@ -256,11 +253,9 @@ export const GamePage = ({
               </HStack>
             </HStack>
           </HStack>
-          <Box maxW={"90%"} mr={"auto"} ml={"auto"}>
+          <Box maxW={"93%"} mr={"auto"} ml={"auto"}>
             {!commingSoon && (
               <Flex
-                ml={-5}
-                mr={-5}
                 mb={12}
                 minW={"100%"}
                 minH={"50vh"}
@@ -311,6 +306,11 @@ export const GamePage = ({
         createIsOpen={createIsOpen}
         createOnOpen={createOnOpen}
         createOnClose={createOnClose}
+      />
+      <ExplainGame
+        explainIsOpen={explainIsOpen}
+        explainOnOpen={explainOnOpen}
+        explainOnClose={explainOnClose}
       />
     </>
   );

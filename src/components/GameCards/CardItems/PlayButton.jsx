@@ -9,6 +9,7 @@ export const PlayButton = ({ text = "text", onClick }) => {
       _hover={{ bg: "whiteAlpha.800" }}
       variant="solid"
       onClick={onClick}
+      disabled={text === "Waiting"}
     >
       <Text color={"red"} fontSize={"sm"} fontWeight={"bold"}>
         {text}

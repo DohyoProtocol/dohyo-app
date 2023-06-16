@@ -13,7 +13,7 @@ export const ListSortDropdown = ({ disabled = false }) => {
       <Box>
         <Button
           disabled={disabled}
-          size="sm"
+          size="md"
           as={Button}
           color={"whiteAlpha.600"}
           bg={"whiteAlpha.100"}

@@ -37,10 +37,7 @@ import { saveTransaction } from "../../utils/transactionHistory";
 const CreateNormalGameTip = () => {
   return (
     <Text pt={1}>
-      <Tooltip
-        shouldWrapChildren
-        label={"Players deposit bet amount once at game start."}
-      >
+      <Tooltip shouldWrapChildren label={"Players place bets once at game start."}>
         <Icon as={FaQuestionCircle} color={"white"} />
       </Tooltip>
     </Text>
@@ -52,7 +49,7 @@ const CreateBoostedGameTip = () => {
     <Text pt={1}>
       <Tooltip
         shouldWrapChildren
-        label={"Players deposit bet amount once at game start and everytime they extend."}
+        label={"Players place bets once at game start and everytime they extend."}
       >
         <Icon as={FaQuestionCircle} color={"white"} />
       </Tooltip>
@@ -66,7 +63,7 @@ const CreateUltraBoostedGameTip = () => {
       <Tooltip
         shouldWrapChildren
         label={
-          "Players deposit bet amount once at gamestart and everytime they extend. Additionally, for each extension, the bet amount gets increased by 10%, and next deadline gets reduced by 1 hour."
+          "Players place bets once at gamestart and everytime they extend. Additionally, for each extension, the bet amount gets increased by 10%, and next deadline gets reduced by 1 hour until a minimum deadline of 1 hour is reached."
         }
       >
         <Icon as={FaQuestionCircle} color={"white"} />
@@ -101,7 +98,7 @@ export const CreateBonsaiGame = ({ createIsOpen, createOnOpen, createOnClose }) 
     useTokensContext();
   const { forceReloadGameData } = useGameDataContext();
   const [approvalGiven, setApprovalGiven] = useState(false);
-  const [token, setToken] = useState("DOHYO");
+  const [token, setToken] = useState("USDC");
   const [betAmount, setBetAmount] = useState("");
   const [boosted, setBoosted] = useState(false);
   const [ultraBoosted, setUltraBoosted] = useState(false);

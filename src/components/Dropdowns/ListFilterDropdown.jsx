@@ -59,7 +59,7 @@ export const ListFilterDropdown = ({
         <Menu closeOnSelect={false}>
           <MenuButton
             disabled={disabled}
-            size="sm"
+            size="md"
             _active={{
               bg: "whiteAlpha.400",
             }}

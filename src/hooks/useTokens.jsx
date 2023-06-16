@@ -101,9 +101,11 @@ export const TokensProvider = ({ children }) => {
             addresses.BONSAI_GAME_CONTRACT
           );
 
-        let newArbBalance = balancesAndAllowances[addresses.ARB_TOKEN];
+        const { balance: newArbBalance, allowance: arbAllowance } =
+          balancesAndAllowances[addresses.ARB_TOKEN];
 
         newBalances["arb"] = newArbBalance.toString();
+        newAllowances[addresses.BONSAI_GAME_CONTRACT]["arb"] = arbAllowance.toString();
 
         const { balance: newWethBalance, allowance: wethAllowance } =
           balancesAndAllowances[addresses.WETH_TOKEN];

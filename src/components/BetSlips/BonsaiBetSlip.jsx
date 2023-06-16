@@ -278,13 +278,11 @@ export const BonsaiBetSlip = ({ slipIsOpen, slipOnClose, gameMeta, gameState }) 
                         m={1}
                         ml={0}
                         fontFamily={"VT323"}
-                        color={nextPlayer === player1 ? "white" : "black"}
-                        bg={nextPlayer === player1 ? "black" : "white"}
+                        color={"black"}
                         fontSize={"xl"}
                         fontWeight={"extrabold"}
                       >
-                        {nextPlayer === player1 ? "‎   ‎" : ""}
-                        {"  player 1"}
+                        {"player 1"}
                       </Text>
                       <Text
                         borderRight={"2px dotted black"}
@@ -299,13 +297,10 @@ export const BonsaiBetSlip = ({ slipIsOpen, slipOnClose, gameMeta, gameState }) 
                         ml={0}
                         fontFamily={"VT323"}
                         fontSize={"xl"}
-                        color={nextPlayer === player2 ? "white" : "black"}
-                        bg={nextPlayer === player2 ? "black" : "white"}
+                        color={"black"}
                         fontWeight={"extrabold"}
                       >
-                        {nextPlayer === player2 ? "‎   ‎" : ""}
-
-                        {"  player 2"}
+                        {"player 2"}
                       </Text>
                       <Text fontFamily={"VT323"} fontSize={"xl"} fontWeight={"extrabold"}>
                         {player2.substring(0, 8) + "..."}
@@ -432,6 +427,17 @@ export const BonsaiBetSlip = ({ slipIsOpen, slipOnClose, gameMeta, gameState }) 
                     </>
                   )}
 
+                  <HStack justifyContent={"space-between"} minW={"100%"}>
+                    <Text
+                      m={0}
+                      mb={-3}
+                      fontFamily={"VT323"}
+                      fontSize={"xl"}
+                      fontWeight={"extrabold"}
+                    >
+                      {"deadline"}
+                    </Text>
+                  </HStack>
                   {started && !ended && !cancelled && deadLineBlocksRemaining && (
                     <HStack justifyContent={"space-between"} minW={"100%"}>
                       <Text
@@ -440,7 +446,7 @@ export const BonsaiBetSlip = ({ slipIsOpen, slipOnClose, gameMeta, gameState }) 
                         fontSize={"xl"}
                         fontWeight={"extrabold"}
                       >
-                        {"deadline"}
+                        {nextPlayer === player1 ? "player 1 " : "player 2 "}
                       </Text>
                       <Text fontFamily={"VT323"} fontSize={"xl"} fontWeight={"extrabold"}>
                         {

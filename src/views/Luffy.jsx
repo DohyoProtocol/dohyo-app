@@ -9,21 +9,18 @@ import scale from "../assets/scale.png";
 
 const chance = new Chance(); // instantiate
 import gradient from "../assets/gradient.png";
+import { ExplainBonsaiGame } from "../components/GameModals/ExplainBonsaiGame";
 
 export const Luffy = () => {
   return (
     <>
       <GamePage
         gameName={"LUFFY"}
-        gameSlogan={"2 tokens compete. 1 token wins."}
-        gameDescription={
-          null
-          // "Bet on 1 of 2 tokens. After a game was started there is a 24 hours betting period. After 7 days, the token which has performed better gets calculated. Pot gets shared between winners proportionally to their bet size."
-        }
         headerBg={gradient}
         headerImage={scale}
         GameCard={LuffyGameCard}
         CreateGame={CreateLuffyGame}
+        ExplainGame={ExplainBonsaiGame}
         openGames={chance.integer({ min: 1, max: 10 })}
         runningGames={chance.integer({ min: 10, max: 20 })}
         endedGames={chance.integer({ min: 20, max: 100 })}
